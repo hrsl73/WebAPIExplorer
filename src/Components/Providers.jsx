@@ -37,7 +37,7 @@ function Providers(){
     return(
         <>
         {/* <h1>Helloooo</h1> */}
-            <nav className="bg-white p-4 shadow-md w-full border-b ">
+            <nav className="bg-white p-4 justify-center">
                 <ul className="flex flex-col gap-6 overflow-y-auto h-screen mt-6 ">
                     {providers.map((provider) => (
                         <li key={provider}
