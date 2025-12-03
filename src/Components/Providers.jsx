@@ -37,11 +37,11 @@ function Providers(){
     return(
         <>
         {/* <h1>Helloooo</h1> */}
-            <nav className="bg-white p-4 shadow-md w-full border-b">
-                <ul className="flex flex-col gap-6 overflow-y-auto h-screen">
+            <nav className="bg-white p-4 shadow-md w-full border-b ">
+                <ul className="flex flex-col gap-6 overflow-y-auto h-screen mt-6 ">
                     {providers.map((provider) => (
                         <li key={provider}
-                        className="cursor-pointer font-semibold hover:text-blue-600 border-b pb-2"
+                        className="cursor-pointer font-semibold hover:text-blue-600 border-b pb-2 w-[300px] "
                         onClick={()=>{console.log(`${provider} is working`)}}
                         >
                             {provider}
