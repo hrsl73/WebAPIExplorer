@@ -35,7 +35,7 @@ function ProviderDetails({ details, onBack }) {
                     {/* Card Header with LOGO */}
                     <div className="bg-gray-50 p-8 border-b flex flex-col md:flex-row items-start md:items-center gap-6">
                         
-                        {/* 2. DISPLAY LOGO IF IT EXISTS */}
+                        {/* 2. Display logo if it exist */}
                         {logoUrl && (
                             <div className="bg-white p-2 rounded-lg shadow-sm border border-gray-200">
                                 <img 
@@ -58,7 +58,7 @@ function ProviderDetails({ details, onBack }) {
 
                     <div className="p-8 space-y-8">
                         
-                        {/* 1. DESCRIPTION */}
+
                         <section>
                             <h3 className="text-xl font-semibold text-gray-700 mb-3 border-l-4 border-blue-500 pl-3">Description</h3>
                             <p className="text-gray-600 leading-relaxed text-lg">
@@ -66,7 +66,7 @@ function ProviderDetails({ details, onBack }) {
                             </p>
                         </section>
 
-                        {/* 2. SWAGGER URL */}
+
                         <section>
                             <h3 className="text-xl font-semibold text-gray-700 mb-3 border-l-4 border-green-500 pl-3">Swagger</h3>
                             <div className="bg-gray-900 text-gray-300 p-4 rounded-lg font-mono text-sm break-all flex flex-col gap-3 items-start">
@@ -82,19 +82,19 @@ function ProviderDetails({ details, onBack }) {
                             </div>
                         </section>
 
-                        {/* 3. CONTACT INFO */}
+
                         <section>
                             <h3 className="text-xl font-semibold text-gray-700 mb-3 border-l-4 border-purple-500 pl-3">Contact Information</h3>
                             
                             {contact ? (
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                    {/* Name */}
+
                                     <div className="bg-purple-50 p-4 rounded-lg border border-purple-100">
                                         <p className="text-xs text-purple-600 uppercase font-bold">Name</p>
                                         <p className="text-gray-800 font-medium">{contact.name || "N/A"}</p>
                                     </div>
 
-                                    {/* Email */}
+
                                     <div className="bg-purple-50 p-4 rounded-lg border border-purple-100">
                                         <p className="text-xs text-purple-600 uppercase font-bold">Email</p>
                                         <p className="text-gray-800 font-medium break-all">
@@ -106,7 +106,7 @@ function ProviderDetails({ details, onBack }) {
                                         </p>
                                     </div>
 
-                                    {/* URL */}
+
                                     <div className="bg-purple-50 p-4 rounded-lg border border-purple-100">
                                         <p className="text-xs text-purple-600 uppercase font-bold">Website</p>
                                         <p className="text-gray-800 font-medium">

@@ -1,27 +1,35 @@
 import { useEffect, useState } from 'react'
 import ProvidersDetails from './ProvidersDetails'
 
-// --- 1. CHILD COMPONENT (Handles individual Dropdown logic) ---
+
+// code for getting title in dropdown
 function ProviderItem({ providerName, onApiClick }) {
     const [isOpen, setIsOpen] = useState(false);
-    const [apiList, setApiList] = useState(null); // Changed: Stores full API objects now
+    const [apiList, setApiList] = useState(null); 
     const [loading, setLoading] = useState(false);
 
     const handleToggle = () => {
-        // Toggle the open state
+
         const nextState = !isOpen;
         setIsOpen(nextState);
 
-        // If opening AND we haven't fetched data yet, fetch it now.
+
         if (nextState && !apiList) {
             setLoading(true);
             fetch(`https://api.apis.guru/v2/${providerName}.json`)
                 .then(res => res.json())
                 .then(data => {
-                    // Extract the FULL objects so we can pass description/contact info later
+
                     const fullApiObjects = Object.values(data.apis);
                     setApiList(fullApiObjects);
                     setLoading(false);
+
+                    // console.log(`only data`)
+                    // console.log(data)
+                    // console.log(`data.apis`)
+                    // console.log(data.apis)
+                    // console.log(`full api objects`)
+                    // console.log(fullApiObjects)
                 })
                 .catch(err => {
                     console.error(err);
@@ -32,32 +40,34 @@ function ProviderItem({ providerName, onApiClick }) {
 
     return (
         <li className="border-b border-gray-200">
-            {/* The Clickable Header */}
+
             <div 
                 onClick={handleToggle}
                 className="flex justify-between items-center p-3 cursor-pointer hover:bg-blue-50 transition-colors"
             >
                 <span className="font-semibold text-gray-700">{providerName}</span>
+                {/* {console.log(providerName)} */}
                 <span className="text-gray-400 text-sm">
                     {isOpen ? "▲" : "▼"}
                 </span>
             </div>
 
-            {/* The Dropdown Content */}
+
             {isOpen && (
                 <div className="bg-gray-50 p-3 pl-6 text-sm text-gray-600 border-t border-gray-100">
                     {loading ? (
                         <p className="italic text-blue-500">Loading API details...</p>
-                    ) : (
+                    ) : 
+                    (
                         <ul className="list-disc pl-4 space-y-2">
                             {apiList && apiList.map((api, index) => (
                                 <li 
                                     key={index} 
                                     className="hover:text-blue-600 cursor-pointer hover:underline font-medium"
-                                    // CHANGE: When clicked, send the WHOLE api object up to the parent
+
                                     onClick={() => onApiClick(api)}
                                 >
-                                    {api.info.title}
+                                    {api.info.title}  , {api.info.version}
                                 </li>
                             ))}
                         </ul>
@@ -68,7 +78,7 @@ function ProviderItem({ providerName, onApiClick }) {
     );
 }
 
-
+// main logic for rendering list of apis 
 function Providers(){
 
     const [providers, setProviders] = useState([])
@@ -93,16 +103,16 @@ function Providers(){
         });
     }, []);
 
-    // CHANGE: View Switching Logic
-    // If we have a selected API, show the Details Screen instead of the list
+
     if (selectedApi) {
-        return (
-            <ProvidersDetails 
-                details={selectedApi} 
-                onBack={() => setSelectedApi(null)} 
-            />
-        )
-    }
+    return (
+        <ProvidersDetails 
+        details={selectedApi} 
+        onBack={() => setSelectedApi(null)} 
+        />
+    );
+}
+
 
     if (loading) {
         return <p className="text-white text-xl">Loading Providers...</p>;
