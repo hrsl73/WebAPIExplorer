@@ -97,7 +97,7 @@ function ProviderDetails({ details, onBack }) {
                                     {/* Email */}
                                     <div className="bg-purple-50 p-4 rounded-lg border border-purple-100">
                                         <p className="text-xs text-purple-600 uppercase font-bold">Email</p>
-                                        <p className="text-gray-800 font-medium">
+                                        <p className="text-gray-800 font-medium break-all">
                                             {contact.email ? (
                                                 <a href={`mailto:${contact.email}`} className="underline hover:text-purple-700">
                                                     {contact.email}
